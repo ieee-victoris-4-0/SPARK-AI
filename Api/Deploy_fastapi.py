@@ -5,25 +5,25 @@ import numpy as np
 from ultralytics import YOLO
 import easyocr
 
-# استدعاء كود الـ OCR بتاعك
+# Call your OCR code
 from modules.text_extraction import extract_text_with_yolo, clean_extracted_texts
 
-# تحميل موديل الـ Object Detection
+# Load the Object Detection model
 det_model = YOLO("models/best.pt")
 
-# تحميل OCR reader (إنجليزي + عربي)
+# Load OCR reader (English + Arabic)
 ocr_reader = easyocr.Reader(["en", "ar"])
 
 app = FastAPI(title="Medicine Detection + OCR API")
 
 @app.post("/predict_medicine")
 async def predict_medicine(file: UploadFile = File(...)):
-    # تحويل الصورة من bytes لـ OpenCV
+    # Convert the image from bytes to OpenCV format
     contents = await file.read()
     nparr = np.frombuffer(contents, np.uint8)
     img = cv2.imdecode(nparr, cv2.IMREAD_COLOR)
 
-    # تشغيل الـ OCR مع YOLO
+    # Run OCR with YOLO
     texts = extract_text_with_yolo(det_model, ocr_reader, img, conf_threshold=0.5)
     cleaned_texts = clean_extracted_texts(texts)
 
