@@ -53,15 +53,15 @@ SPARK_AI/
 ## 🖼 Visual Results
 
 ### Training Samples
-![Training Samples](Training_set_samples.png)
+![Training Samples]("C:/Users/Mohamed Mahmoud/Dawak_vect/image/Training set samples.png")
 Example training images with annotated drug name regions from our dataset
 
 ### Test Predictions  
-![Test Predictions](Visualizing_predictions_on_test_images.png)
+![Test Predictions]("C:/Users/Mohamed Mahmoud/Dawak_vect/image/Visualizing predictions on test images.png")
 Model predictions on test images showing accurate bounding boxes and confidence scores
 
 ### Complete Pipeline
-![Complete Pipeline](image_through_the_complete_pipeline.png)
+![Complete Pipeline]("C:/Users/Mohamed Mahmoud/Dawak_vect/image/download.png")
 End-to-end pipeline demonstrating original image, YOLOv8 detection, region cropping, and OCR text extraction
 
 ## 🛠 Installation
