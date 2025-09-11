@@ -1,19 +1,17 @@
 # SPARK AI - Drug Name Detection System
 
-![SPARK AI Logo](Training_set_samples.png)
-
-## 🚀 Overview
+##  Overview
 SPARK AI is an advanced drug name detection system that combines YOLOv8 object detection with OCR technology to accurately identify and extract drug names from medication packaging. Developed by the SPARK AI team, this system achieves state-of-the-art performance with 88.7% mAP50 accuracy.
 
-## 📊 Performance Highlights
-- *mAP50*: 0.8870
-- *mAP50-95*: 0.6087  
-- *Precision*: 0.8758
-- *Recall*: 0.8352
-- *Inference Speed*: 170.2ms per image
+##  Performance Highlights
+- **mAP50**: 0.8870
+- **mAP50-95**: 0.6087  
+- **Precision**: 0.8758
+- **Recall**: 0.8352
+- **Inference Speed**: 170.2ms per image
 
-## 🏗 Project Structure
-
+##  Project Structure
+```
 SPARK_AI/
 │
 ├── Api/                          # FastAPI deployment code
@@ -48,37 +46,53 @@ SPARK_AI/
 ├── config.py                     # Configuration settings
 ├── main.py                       # Main application entry point
 └── requirements.txt              # Python dependencies
+```
+
+##  Visual Results
+
+Our experiments produced strong results across training, testing, and full pipeline evaluation. Below we highlight some representative examples.
+
+---
+
+###  Training Samples
+![Training Set Samples](https://raw.githubusercontent.com/ieee-victoris-4-0/SPARK-AI/main/image/Training%20set%20samples.png)
+
+*Example training images from our dataset, with annotated regions marking drug names. These annotations serve as ground truth for model training.*
+
+---
+
+###  Test Predictions
+![Test Predictions](https://raw.githubusercontent.com/ieee-victoris-4-0/SPARK-AI/main/image/Visualizing%20predictions%20on%20test%20images.png)
+
+*Model predictions on unseen test images. The system generates bounding boxes around drug names with high confidence scores, demonstrating robust generalization.*
+
+---
+
+###  Complete Pipeline
+![Complete Pipeline](https://raw.githubusercontent.com/ieee-victoris-4-0/SPARK-AI/main/image/download.png)
+
+*End-to-end pipeline overview: the original input image is processed by the YOLOv8 model to detect regions of interest, cropped for further refinement, and passed through OCR to extract textual drug information.*
+
+---
+
+ These results highlight the effectiveness of our approach in accurately detecting and recognizing drug names from medical imagery.
 
 
-## 🖼 Visual Results
+##  Installation
 
-### Training Samples
-![Training Samples]("C:/Users/Mohamed Mahmoud/Dawak_vect/image/Training set samples.png")
-Example training images with annotated drug name regions from our dataset
-
-### Test Predictions  
-![Test Predictions]("C:/Users/Mohamed Mahmoud/Dawak_vect/image/Visualizing predictions on test images.png")
-Model predictions on test images showing accurate bounding boxes and confidence scores
-
-### Complete Pipeline
-![Complete Pipeline]("C:/Users/Mohamed Mahmoud/Dawak_vect/image/download.png")
-End-to-end pipeline demonstrating original image, YOLOv8 detection, region cropping, and OCR text extraction
-
-## 🛠 Installation
-
-bash
+```bash
 # Clone repository (when available)
 # git clone https://github.com/spark-team/SPARK_AI.git
 cd SPARK_AI
 
 # Install dependencies
 pip install -r requirements.txt
+```
 
-
-## 🚀 Quick Start
+##  Quick Start
 
 ### Command Line Interface
-bash
+```bash
 # Single image processing
 python main.py --image path/to/medicine.jpg
 
@@ -87,30 +101,30 @@ python main.py --folder path/to/medicines/ --confidence 0.6
 
 # Using custom model
 python main.py --image medicine.jpg --model_path model/best.pt
-
+```
 
 ### API Deployment
-bash
+```bash
 # Start FastAPI server
 python Api/deploy_fastapi.py
 
 # API will be available at http://localhost:8000
 # Interactive docs at http://localhost:8000/docs
-
+```
 
 ### Example API Usage
-bash
+```bash
 # Detect drug name from image
 curl -X POST -F "image=@medicine.jpg" http://localhost:8000/detect
 
 # Get health status
 curl http://localhost:8000/health
+```
 
-
-## 📖 Usage Examples
+##  Usage Examples
 
 ### Python Integration
-python
+```python
 from scr.ocr.text_extraction import DrugDetector
 
 # Initialize detector
@@ -122,29 +136,29 @@ print(f"Detected: {result['text']} (Confidence: {result['confidence']:.3f})")
 
 # Batch processing
 results = detector.process_batch(["med1.jpg", "med2.jpg"])
+```
 
-
-## 🧩 Core Modules
+##  Core Modules
 
 ### 1. Object Detection (YOLOv8)
-- *Model*: model/best.pt (custom trained)
-- *Input Size*: 640x640 pixels  
-- *Confidence Threshold*: 0.5 (configurable)
-- *NMS IoU Threshold*: 0.45
+- **Model**: `model/best.pt` (custom trained)
+- **Input Size**: 640x640 pixels  
+- **Confidence Threshold**: 0.5 (configurable)
+- **NMS IoU Threshold**: 0.45
 
 ### 2. OCR Processing (EasyOCR)
-- *Language Support*: English
-- *Text Confidence Threshold*: 0.7
-- *GPU Acceleration*: Supported
-- *Text Validation*: Integrated
+- **Language Support**: English
+- **Text Confidence Threshold**: 0.7
+- **GPU Acceleration**: Supported
+- **Text Validation**: Integrated
 
 ### 3. API Services (FastAPI)
-- *RESTful Endpoints*: JSON API
-- *Batch Processing*: Multiple image support
-- *Health Monitoring*: System status checks
-- *Interactive Documentation*: Auto-generated docs
+- **RESTful Endpoints**: JSON API
+- **Batch Processing**: Multiple image support
+- **Health Monitoring**: System status checks
+- **Interactive Documentation**: Auto-generated docs
 
-## ⚡ Performance Metrics
+##  Performance Metrics
 
 | Operation | Time (ms) |
 |-----------|-----------|
@@ -152,21 +166,21 @@ results = detector.process_batch(["med1.jpg", "med2.jpg"])
 | Inference | 170.2 |
 | Postprocessing | 0.9 |
 | OCR Extraction | 400.0 |
-| *Total* | *575.1* |
+| **Total** | **575.1** |
 
-## 🎯 Accuracy Results
+##  Accuracy Results
 
 ### Detection Performance
-
-✅ mAP50: 0.8870
-✅ mAP50-95: 0.6087  
-✅ Precision: 0.8758
-✅ Recall: 0.8352
-✅ F1 Score: 0.8550
-
+```
+-> mAP50: 0.8870
+-> mAP50-95: 0.6087  
+-> Precision: 0.8758
+-> Recall: 0.8352
+-> F1 Score: 0.8550
+```
 
 ### Sample Output
-json
+```json
 {
   "success": true,
   "results": [
@@ -179,13 +193,13 @@ json
   ],
   "processing_time": 0.425
 }
+```
 
+##  Configuration
 
-## 🔧 Configuration
+Edit `config.py` to customize settings:
 
-Edit config.py to customize settings:
-
-python
+```python
 # Model settings
 MODEL_CONFIG = {
     "confidence_threshold": 0.5,
@@ -199,13 +213,13 @@ OCR_CONFIG = {
     "text_threshold": 0.7,
     "gpu_acceleration": False
 }
+```
 
+##  Team
 
-## 👥 Team
-
-### *SPARK AI Team*
-- *Hassan Abdul-razeq* - AI Research & Development
-- *Mohamed Mahmoud Elseragy* - Machine Learning Engineering
+### **SPARK AI Team**
+- **Hassan Abdul-razeq** 
+- **Mohamed Mahmoud Elseragy** 
 
 ### Key Contributions
 - Custom YOLOv8 model training and optimization
@@ -213,44 +227,34 @@ OCR_CONFIG = {
 - API design and implementation
 - Performance benchmarking and validation
 
-## 🌟 Features
+##  Features
 
-- ✅ *High Accuracy*: 88.7% mAP50 detection rate
-- ✅ *Fast Processing*: ~575ms end-to-end latency
-- ✅ *Batch Support*: Concurrent image processing
-- ✅ *REST API*: Easy web/mobile integration
-- ✅ *Configurable*: Adjustable parameters
-- ✅ *Visualization*: Results with bounding boxes
-- ✅ *Export*: JSON, text, and image outputs
+-> **High Accuracy**: 88.7% mAP50 detection rate
+-> **Fast Processing**: ~575ms end-to-end latency
+-> **Batch Support**: Concurrent image processing
+-> **REST API**: Easy web/mobile integration
+-> **Configurable**: Adjustable parameters
+-> **Visualization**: Results with bounding boxes
+-> **Export**: JSON, text, and image outputs
 
-## 🚀 Deployment Options
+##  Deployment Options
 
 ### Local Deployment
-bash
+```bash
 # Production deployment
 python Api/deploy_fastapi.py
+```
 
 
-### Docker Deployment (Example)
-dockerfile
-# Example Dockerfile
-FROM python:3.9-slim
-WORKDIR /app
-COPY requirements.txt .
-RUN pip install -r requirements.txt
-COPY . .
-CMD ["python", "Api/deploy_fastapi.py"]
+##  Performance Tips
 
+1. **Enable GPU** for faster OCR processing
+2. **Adjust confidence thresholds** for precision/recall balance
+3. **Use batch processing** for multiple images
+4. **Resize large images** before processing
+5. **Monitor system resources** during deployment
 
-## 📈 Performance Tips
-
-1. *Enable GPU* for faster OCR processing
-2. *Adjust confidence thresholds* for precision/recall balance
-3. *Use batch processing* for multiple images
-4. *Resize large images* before processing
-5. *Monitor system resources* during deployment
-
-## 🤝 Contributing
+##  Contributing
 
 We welcome contributions! Please follow these guidelines:
 
@@ -260,26 +264,23 @@ We welcome contributions! Please follow these guidelines:
 4. Add tests if applicable
 5. Submit a pull request
 
-## 📄 License
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+##  Acknowledgments
 
-## 🙏 Acknowledgments
+- **Ultralytics** for YOLOv8 framework
+- **EasyOCR** team for text recognition
+- **OpenCV** community for image processing
+- **FastAPI** team for web framework
 
-- *Ultralytics* for YOLOv8 framework
-- *EasyOCR* team for text recognition
-- *OpenCV* community for image processing
-- *FastAPI* team for web framework
-
-## 📞 Support
+##  Support
 
 For support and questions:
-- 📧 Email: spark.ai.team@example.com
-- 🐛 Issues: GitHub Issues page
-- 💬 Discussions: GitHub Discussions
+-  Email: spark.ai.team@example.com
+-  Issues: GitHub Issues page
+-  Discussions: GitHub Discussions
 
 ---
 
-*SPARK AI* - Transforming Pharmaceutical Automation through AI 💊🤖
+**SPARK AI** - Transforming Pharmaceutical Automation through AI 
 
-"Accurate drug detection for safer medication management"
+*"Accurate drug detection for safer medication management"*
