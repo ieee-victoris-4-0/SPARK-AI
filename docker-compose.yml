@@ -1,0 +1,12 @@
+services:
+  ai_service:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: ai_service
+    ports:
+      - "8000:8000"   # FastAPI
+      - "8501:8501"   # Streamlit
+    volumes:
+      - .:/app
+    restart: unless-stopped

@@ -15,7 +15,7 @@ from scr.text_extraction import extract_text_with_yolo, clean_extracted_texts
 
 # Load the Object Detection model
 # تأكد إن المسار صحيح بالنسبة لمكان الملف Deploy_fastapi.py
-det_model = YOLO("../models/best.pt")
+det_model = YOLO("models/best.pt")
 
 # Load OCR reader (English + Arabic)
 ocr_reader = easyocr.Reader(["en", "ar"])

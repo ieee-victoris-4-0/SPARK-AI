@@ -1,7 +1,11 @@
+# API
 fastapi==0.104.1
 uvicorn==0.24.0
+python-multipart==0.0.6
+gunicorn==21.2.0
+streamlit==1.28.0   # <<< مهم
 
-# PyTorch CPU
+# PyTorch (CPU-only)
 --extra-index-url https://download.pytorch.org/whl/cpu
 torch==2.1.0+cpu
 torchvision==0.16.0+cpu
@@ -20,11 +24,3 @@ pandas==2.1.2
 
 # Text matching
 rapidfuzz==3.5.2
-
-# FastAPI file upload
-python-multipart==0.0.6
-
-# Production server (optional)
-gunicorn==21.2.0
-# For CORS handling (optional)
-fastapi-cors==0.1.4     
