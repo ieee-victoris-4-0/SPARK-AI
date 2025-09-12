@@ -14,7 +14,8 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 from scr.text_extraction import extract_text_with_yolo, clean_extracted_texts
 
 # Load the Object Detection model
-det_model = YOLO("../models/best.pt")  # Path relative to api folder
+# تأكد إن المسار صحيح بالنسبة لمكان الملف Deploy_fastapi.py
+det_model = YOLO("../models/best.pt")
 
 # Load OCR reader (English + Arabic)
 ocr_reader = easyocr.Reader(["en", "ar"])
@@ -35,7 +36,7 @@ async def predict_medicine(file: UploadFile = File(...)):
 
     return JSONResponse(content={"texts": cleaned_texts})
 
-
 if __name__ == "__main__":
     import uvicorn
+    # لاحظ تعديل اسم الملف ليطابق case-sensitive على GitHub
     uvicorn.run("Api.Deploy_fastapi:app", host="0.0.0.0", port=8000, reload=True)
