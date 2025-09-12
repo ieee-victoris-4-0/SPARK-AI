@@ -25,7 +25,7 @@ SPARK_AI/
 │   ├── test/                     # Testing data  
 │   └── valid/                    # Validation data
 │
-├── model/                        # Model files
+├── models/                        # Model files
 │   └── best.pt                   # Trained YOLOv8 model
 │
 ├── notebook/                     # Jupyter notebooks
